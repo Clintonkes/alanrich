@@ -25,8 +25,8 @@ origins = [
     "http://localhost:5173",
     "http://localhost:3000",
     "http://127.0.0.1:5173",
-    "https://alanrichllc.com",
-    "https://www.alanrichllc.com",
+    "https://alanrichllc.org",
+    "https://www.alanrichllc.org",
     "https://clintonkes.github.io",
 ]
 render_url = os.getenv("RENDER_EXTERNAL_URL")
@@ -57,7 +57,7 @@ def _seed_admin():
         # guessable default.
         return
 
-    admin_email = os.getenv("ADMIN_EMAIL", "admin@avenessllc.com")
+    admin_email = os.getenv("ADMIN_EMAIL", "admin@alanrichllc.org")
     db = SessionLocal()
     try:
         existing = db.query(Admin).first()
@@ -144,7 +144,7 @@ def create_contact(data: ContactCreate, db: Session = Depends(get_db)):
         ),
     )
 
-    admin_email = os.getenv("ADMIN_EMAIL", "admin@avenessllc.com")
+    admin_email = os.getenv("ADMIN_EMAIL", "admin@alanrichllc.org")
     send_email(
         to_email=admin_email,
         subject=f"New Contact: {data.subject or 'No subject'}",
